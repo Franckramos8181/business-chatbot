@@ -48,6 +48,29 @@ QuickBooks API → sync → PostgreSQL → analysis engine → OpenAI Q&A
 
 See `docs/ARCHITECTURE.md` for details.
 
+## Operational Integrations
+
+In addition to QuickBooks (financial source of truth), the system pulls operational data from:
+
+- **EZRentOut** — equipment rental utilization and rates
+- **PictaMail** — mailing campaign costs and volumes
+- **MyTaxPrepOffice** — tax return counts and types
+- **USPS** — shipping and postage costs
+
+These provide context for volume-based analysis and pricing decisions without overriding QuickBooks financial data.
+
+## Example Questions
+
+```
+"What's my net profit this year?"
+"If I raise tax returns by $5, what's the annual net profit increase?"
+"Which products can I raise prices on with the lowest customer impact?"
+"What pricing changes get me to $100K annual profit?"
+"How long to pay off my credit card debt at $500/month?"
+"Show me my top customers by revenue"
+"What does my revenue forecast look like for the next 6 months?"
+```
+
 ## Tech Stack
 
 - Python 3.11+
@@ -56,3 +79,9 @@ See `docs/ARCHITECTURE.md` for details.
 - OpenAI API (GPT-4 with function calling)
 - FastAPI for the web interface
 - APScheduler for nightly syncs
+
+## Documentation
+
+- [Architecture Overview](docs/ARCHITECTURE.md)
+- [QuickBooks Setup](docs/QUICKBOOKS_SETUP.md)
+- [Deployment Guide](docs/DEPLOYMENT.md)
